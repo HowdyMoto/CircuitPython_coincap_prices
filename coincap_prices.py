@@ -52,9 +52,6 @@ class CoincapPriceChecker:
 
         except (ValueError, RuntimeError) as e:
             print("Error: ", e)
-            rect_background.fill = (160,0,0)
-            time.sleep(10)
-            microcontroller.reset()
 
     def get_btc_price(self):
         return self.get_price("bitcoin")
