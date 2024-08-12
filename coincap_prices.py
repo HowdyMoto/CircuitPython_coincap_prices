@@ -30,11 +30,10 @@ class CoincapPriceChecker:
         self.pool = adafruit_connection_manager.get_radio_socketpool(wifi.radio)
         self.ssl_context = adafruit_connection_manager.get_radio_ssl_context(wifi.radio)
         self.requests = adafruit_requests.Session(self.pool, self.ssl_context)
-        self.header = {'Authorization': 'Bearer ' + os.getenv("COINCAP_API_KEY")}
 
     def get_price(self, coin_name):
         try:
-            response = self.requests.get(self.URL + coin_name, headers=self.header)
+            response = self.requests.get(self.URL + coin_name)
             if response.status_code == 200:
                 response_json = response.json()
 
